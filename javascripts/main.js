@@ -21,7 +21,7 @@ var get_params = function(search_string) {
 
 var params = get_params(location.search);
 console.log(params);
-var testurl = "https://www.mixcloud.com/oauth/authorize?client_id=KaaDtLdCJUq5tMJQNF&redirect_uri=http://solofi.free.fr/MixCloud/app.html";
+var testurl = "https://www.mixcloud.com/oauth/authorize?client_id=KaaDtLdCJUq5tMJQNF&redirect_uri=https://d10z.github.io/dioz.github.io/app.html";
 if(params["code"]){
 	$("#myparam").html(params["code"]);
 }else{
