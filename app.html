@@ -15,11 +15,6 @@
     }
 
     body {
-      -webkit-touch-callout: none;
-        -webkit-user-select: none;
-           -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
       background-image: -webkit-gradient(linear, left bottom, right top, from(#1f2c41), color-stop(#2d4a6d), color-stop(#356b9b), color-stop(#358ecc), to(#25b3ff));
       background-image: -o-linear-gradient(left bottom, #1f2c41, #2d4a6d, #356b9b, #358ecc, #25b3ff);
       background-image: linear-gradient(to right top, #1f2c41, #2d4a6d, #356b9b, #358ecc, #25b3ff);
@@ -97,7 +92,7 @@
     var params = get_params(location.search);
     var testurl = "https://www.mixcloud.com/oauth/authorize?client_id=KaaDtLdCJUq5tMJQNF&redirect_uri=https://d10z.github.io/SLF-MixCloud/app.html";
     if(params["code"]){
-      $("#myparam").html("Ta clé de connexion à Mixcloud est : <b>" + params["code"] + "</b>");
+      $("#myparam").html("Ta clé de connexion à Mixcloud est :<br><b>" + params["code"] + "</b>");
     }else{
       window.location = testurl;
     }
