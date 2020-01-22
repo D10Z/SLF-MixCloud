@@ -65,9 +65,9 @@
   <div class="background-filter">
     <div class="shift-up text-format">
       <div id="loading">
-        <img src="MixCloud.png" alt="Chargement" style="width:40%" />
+        <img src="MixCloud.png" alt="Chargement" style="width:30%" />
         </br>
-        <div id="text"></div>
+        <div id="myparam"></div>
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
     var params = get_params(location.search);
     var testurl = "https://www.mixcloud.com/oauth/authorize?client_id=KaaDtLdCJUq5tMJQNF&redirect_uri=https://d10z.github.io/SLF-MixCloud/app.html";
     if(params["code"]){
-      $("#myparam").html(params["code"]);
+      $("#myparam").html("Ta clé de connexion à Mixcloud est : <b>" + params["code"] + "</b>");
     }else{
       window.location = testurl;
     }
