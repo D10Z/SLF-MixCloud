@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="SoLoFi MixCloud">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title>SoLoFi - Connexion à SoundCloud</title>
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <style>
+    * {
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+
+    body {
+      -webkit-touch-callout: none;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+      background-image: -webkit-gradient(linear, left bottom, right top, from(#1f2c41), color-stop(#2d4a6d), color-stop(#356b9b), color-stop(#358ecc), to(#25b3ff));
+      background-image: -o-linear-gradient(left bottom, #1f2c41, #2d4a6d, #356b9b, #358ecc, #25b3ff);
+      background-image: linear-gradient(to right top, #1f2c41, #2d4a6d, #356b9b, #358ecc, #25b3ff);
+      background-size: auto 120%;
+      background-repeat: no-repeat;
+      background-position: left top;
+      background-attachment: fixed;
+      height: 100%;
+      margin: 0;
+    }
+
+    .background-filter {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      min-height: 100vh;
+    }
+    
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .shift-up {
+      position: relative;
+      top: 50%;
+      transform: translateY(25%);
+    }
+    
+    .text-format {
+      text-align: center;
+      vertical-align: middle;
+      font-size: 25px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body onload="">
+  <div class="background-filter">
+    <div class="shift-up text-format">
+      <div id="loading">
+        <img src="MixCloud.png" alt="Chargement" style="width:40%" />
+        </br>
+        <div id="text"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    var get_params = function(search_string) {
+      var parse = function(params, pairs) {
+        var pair = pairs[0];
+        var parts = pair.split('=');
+        var key = decodeURIComponent(parts[0]);
+        var value = decodeURIComponent(parts.slice(1).join('='));
+
+        // Handle multiple parameters of the same name
+        if (typeof params[key] === "undefined") {
+          params[key] = value;
+        } else {
+          params[key] = [].concat(params[key], value);
+        }
+
+        return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+      }
+
+      // Get rid of leading ?
+      return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+    }
+
+    var params = get_params(location.search);
+    var testurl = "https://www.mixcloud.com/oauth/authorize?client_id=KaaDtLdCJUq5tMJQNF&redirect_uri=https://d10z.github.io/SLF-MixCloud/index.html";
+    if(params["code"]){
+      $("#myparam").html(params["code"]);
+    }else{
+      window.location = testurl;
+    }
+  </script>
+</body>
+
+</html>
